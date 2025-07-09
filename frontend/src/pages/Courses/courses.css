@@ -1,0 +1,221 @@
+.courses {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - var(--header-height));
+}
+
+.courses h2 {
+    font-size: 2.2rem;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* ===== TOOLBAR ===== */
+.courses-toolbar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    align-items: stretch;
+}
+
+.courses-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 0 16px;
+    transition: border-color 0.2s;
+}
+
+.courses-search:focus-within {
+    border-color: var(--primary-color);
+}
+
+.cs-icon {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.courses-search input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 14px 0;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    outline: none;
+    font-family: inherit;
+    min-height: 44px;
+}
+
+.courses-search input::placeholder {
+    color: var(--text-secondary);
+}
+
+.filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    min-height: 44px;
+}
+
+.filter-toggle:hover,
+.filter-toggle.active {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: var(--secondary-color);
+}
+
+/* ===== FILTER PANEL ===== */
+.filter-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+    animation: dropIn 0.2s ease;
+}
+
+@keyframes dropIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.filter-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-chip {
+    padding: 7px 16px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+    font-weight: 500;
+    min-height: 36px;
+}
+
+.filter-chip:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.filter-chip.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.clear-filters {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    background: #fee2e2;
+    color: #dc2626;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    align-self: flex-end;
+}
+
+[data-theme="dark"] .clear-filters {
+    background: #7f1d1d;
+    color: #fca5a5;
+}
+
+.clear-filters:hover { opacity: 0.8; }
+
+.results-info {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+/* ===== COURSE GRID ===== */
+.course-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+.course-container > * {
+    width: 100%;
+}
+
+/* ===== EMPTY STATE ===== */
+.courses-empty {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.courses-empty h3 {
+    margin: 0 0 8px;
+    font-size: 1.3rem;
+}
+
+.courses-empty p {
+    color: var(--text-secondary);
+    margin: 0 0 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    .courses h2 { font-size: 1.6rem; }
+
+    .courses-toolbar {
+        flex-direction: column;
+    }
+
+    .filter-panel {
+        flex-direction: column;
+    }
+
+    .course-container {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,258 @@
+.battle-page {
+    min-height: calc(100vh - var(--header-height));
+    background-color: var(--background-color);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.battle-container {
+    width: 100%;
+    max-width: 800px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ===== LOBBY ===== */
+.lobby-view {
+    text-align: center;
+}
+
+.lobby-hero {
+    margin-bottom: 40px;
+}
+
+.lobby-hero h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.lobby-hero p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.lobby-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.lobby-actions .common-btn {
+    font-size: 1.2rem;
+    padding: 15px 40px;
+    border-radius: 50px;
+}
+
+.matchmaking-status {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.radar-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== ACTIVE BATTLE ===== */
+.battle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.vs-badge {
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-info h3 {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.battle-timer {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.question-tracker {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.qt-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--border-color);
+    transition: all 0.3s;
+}
+
+.qt-dot.active {
+    background: var(--primary-color);
+    transform: scale(1.3);
+}
+
+.qt-dot.answered {
+    background: #22c55e;
+}
+
+.battle-question-card {
+    background: var(--background-color);
+    padding: 30px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+
+.battle-question-card h2 {
+    color: var(--text-color);
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+}
+
+.battle-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.battle-option {
+    padding: 15px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.battle-option:hover {
+    border-color: var(--primary-color);
+    background: var(--hover-color);
+}
+
+.battle-option.selected {
+    border-color: var(--primary-color);
+    background: rgba(8, 189, 128, 0.1);
+    font-weight: 600;
+}
+
+.battle-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ===== RESULT VIEW ===== */
+.result-view {
+    text-align: center;
+    animation: dropIn 0.5s ease;
+}
+
+.result-header {
+    margin-bottom: 40px;
+}
+
+.result-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.result-header.win h1 { color: #22c55e; }
+.result-header.loss h1 { color: #ef4444; }
+.result-header.tie h1 { color: #f59e0b; }
+
+.scores-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.score-card {
+    background: var(--background-color);
+    padding: 30px;
+    border-radius: 16px;
+    width: 200px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.score-card.is-winner {
+    border: 2px solid #22c55e;
+    background: rgba(34, 197, 94, 0.05);
+}
+
+.sc-name {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.sc-score {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.tie-breaker-msg {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .scores-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .score-card {
+        width: 100%;
+    }
+    .lobby-actions {
+        flex-direction: column;
+    }
+}

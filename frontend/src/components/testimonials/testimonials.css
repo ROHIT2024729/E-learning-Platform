@@ -1,0 +1,77 @@
+.testimonials {
+  padding: 80px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.testimonials h2 {
+  font-size: 32px;
+  color: #8a4baf;
+  margin-bottom: 40px;
+}
+
+/* Container */
+.testimonials-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Each card */
+.testimonials-card {
+  background-color: #fff;
+  border-radius: 12px;
+  width: 300px;
+  padding: 30px 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.testimonials-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image */
+.student-image img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+/* Message text */
+.message {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Info section */
+.info {
+  text-align: center;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #8a4baf; /* Purple name */
+  margin-bottom: 5px;
+}
+
+.position {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonials-card {
+    width: 90%;
+  }
+}

@@ -28,7 +28,7 @@ export const fetechLectures = TryCatch(async(req,res)=>{
     if(user.role === "admin") 
         return res.json({lectures});
 
-    if(!user.subscription.includes(req.params.id))
+    if(!user.subscription.some(sub => sub.toString() === req.params.id))
         return res.status(400).json({
     message:"You don't have a subscription of this Batch!"
 });
@@ -45,7 +45,7 @@ export const fetechLecture = TryCatch(async(req,res)=>{
     if(user.role === "admin") 
         return res.json({lecture});
 
-    if(!user.subscription.includes(req.params.id))
+    if(!user.subscription.some(sub => sub.toString() === lecture.course.toString()))
         return res.status(400).json({
     message:"You don't have a subscription of this Batch!"
 });
@@ -100,7 +100,7 @@ export const paymentVerification = Trycatch(async(req,res)=>{
     const isAuthentic = expectedSignature === razorpay_signature;
 
     if(isAuthentic) {
-        await Payment.Create({
+        await Payment.create({
             razorpay_order_id,
             razorpay_payment_id,
             razorpay_signature,
@@ -122,4 +122,39 @@ export const paymentVerification = Trycatch(async(req,res)=>{
             message:"Payment Failed!"
         })
     }
+});
+
+export const rateCourse = TryCatch(async (req, res) => {
+    const { rating } = req.body;
+    const courseId = req.params.id;
+    const userId = req.user._id;
+
+    if (!rating || rating < 1 || rating > 5) {
+        return res.status(400).json({ message: "Please provide a valid rating between 1 and 5" });
+    }
+
+    const course = await Courses.findById(courseId);
+    if (!course) {
+        return res.status(404).json({ message: "Course not found" });
+    }
+
+    const user = await User.findById(userId);
+    if (!user.subscription.includes(courseId)) {
+        return res.status(403).json({ message: "You must be subscribed to rate this course" });
+    }
+
+    const existingRatingIndex = course.ratings.findIndex(r => r.userId.toString() === userId.toString());
+    
+    if (existingRatingIndex >= 0) {
+        course.ratings[existingRatingIndex].rating = rating;
+    } else {
+        course.ratings.push({ userId, rating });
+    }
+
+    await course.save();
+
+    res.status(200).json({
+        message: "Rating submitted successfully",
+        course
+    });
 });

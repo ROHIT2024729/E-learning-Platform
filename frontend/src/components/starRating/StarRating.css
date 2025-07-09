@@ -1,0 +1,23 @@
+.star-rating-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stars {
+    display: flex;
+}
+
+.stars input[type="radio"] {
+    display: none;
+}
+
+.star {
+    transition: color 0.2s;
+}
+
+.rating-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}

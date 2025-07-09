@@ -1,0 +1,206 @@
+.account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - var(--header-height));
+    padding: 20px;
+    background-color: var(--background-color);
+}
+
+.profile {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.profile h2 {
+    color: var(--text-color);
+    margin-bottom: 30px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0 auto 30px;
+}
+
+.profile-info {
+    text-align: left;
+}
+
+.info-group {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.info-group p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.account-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.account-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+}
+
+.admin-btn {
+    background-color: var(--text-color);
+}
+
+.admin-btn:hover {
+    background-color: #000;
+}
+
+.logout-btn {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.logout-btn:hover {
+    background-color: #fef2f2;
+    color: #dc2626;
+}
+
+/* ===== EDIT PROFILE & CHANGE PASSWORD ===== */
+
+.editable-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edit-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edit-inline input {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+    width: 200px;
+}
+
+.icon-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+}
+
+.icon-action-btn.edit {
+    color: var(--text-secondary);
+}
+
+.icon-action-btn.edit:hover {
+    color: var(--primary-color);
+    background: var(--hover-color);
+}
+
+.icon-action-btn.save {
+    color: #22c55e;
+    background: #d1fae5;
+}
+
+.icon-action-btn.save:hover {
+    background: #bbf7d0;
+}
+
+.icon-action-btn.cancel {
+    color: #ef4444;
+    background: #fee2e2;
+}
+
+.icon-action-btn.cancel:hover {
+    background: #fecaca;
+}
+
+/* Dark Mode Button Overrides */
+[data-theme="dark"] .icon-action-btn.save {
+    background: #064e3b;
+    color: #4ade80;
+}
+
+[data-theme="dark"] .icon-action-btn.cancel {
+    background: #7f1d1d;
+    color: #f87171;
+}
+
+.change-password-form {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border-color);
+    animation: dropIn 0.3s ease;
+}
+
+@keyframes dropIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.change-password-form h3 {
+    margin: 0 0 20px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.change-password-form input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+    margin-top: 5px;
+}
+
+.change-password-form input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}

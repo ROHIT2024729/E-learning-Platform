@@ -35,3 +35,35 @@ form input {
     border: 1px solid #ccc;
     border-radius: 5px; 
 }
+
+.forgot-link {
+    margin: 5px 0 0;
+}
+
+.forgot-link a {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.forgot-link a:hover {
+    text-decoration: underline;
+}
+
+.auth-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: -5px 0 15px;
+    line-height: 1.4;
+}
+
+.resend-link {
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.resend-link:hover {
+    text-decoration: underline;
+}

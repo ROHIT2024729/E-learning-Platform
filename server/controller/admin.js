@@ -77,16 +77,24 @@ export const deleteCourse = Trycatch(async(req,res)=>{
 
     await Promise.all(
         lectures.map(async(lecture)=>{
-            await unlinkAsync(lecture.video);
-            console.log("video Removed!");
+            try {
+                await unlinkAsync(lecture.video);
+                console.log("video Removed!");
+            } catch (err) {
+                console.log("Video not found on disk, skipping.");
+            }
         })
     );
-    rm(course.image,()=>{
-        console.log("image Deleted!");
-    })
-    await Lecture.find({course: req.params.id}).deleteMany();
+    try {
+        rm(course.image,()=>{
+            console.log("image Deleted!");
+        });
+    } catch (err) {
+        console.log("Image not found on disk, skipping.");
+    }
+    await Lecture.deleteMany({course: req.params.id});
 
-    await Courses.deleteOne();
+    await course.deleteOne();
     await User.updateMany({},{$pull:{ subscription : req.params.id }});
 
     res.json({
