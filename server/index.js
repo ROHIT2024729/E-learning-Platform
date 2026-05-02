@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from "dotenv";
+dotenv.config();
 import { connectDb } from './database/db.js';
 import userRoutes from "./routes/user.js";
 import courseRoutes from './routes/course.js';
@@ -13,11 +14,10 @@ import Razorpay from 'razorpay';
 import cors from 'cors';
 
 export const instance = new Razorpay({
-    key_id: "rzp_test_RUrTd5r5lro1jJ",
-    key_secret: "UFREo7qrO6lumQ5aMPlXpaur",
+    key_id: process.env.Razorpay_Key,
+    key_secret: process.env.Razorpay_Secret,
 });
 
-dotenv.config();
 import { Server } from "socket.io";
 import http from "http";
 import setupBattleSockets from "./socket/battleHandler.js";
